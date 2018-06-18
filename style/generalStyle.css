@@ -1,0 +1,24 @@
+/*
+general cascading stylehsheet - this general format applies to all elements
+within this page
+*/
+
+body { /* default.html <body></body> code */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+.mainDiv {
+  margin: 0;
+  padding: 0;
+  background-color: lightgrey;
+  width: 100%;
+  height: 100%;
+}
+
+.interactDiv { /* consists of canvasBox and sideBox */
+  height: 97%;
+  width: 100%;
+}

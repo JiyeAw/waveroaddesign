@@ -1,0 +1,166 @@
+/*accordionBox cascading style sheet
+This is the modification of accordionBox and
+everything within accordion
+*/
+
+#sideBox #accordionBox {
+  margin-top: 45px;
+}
+
+.accordion {
+  background-color: #288db7;
+  cursor: pointer;
+  padding: 15px;
+  min-width: 1vw;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+.active {
+  background-color: #4c92af;
+  color: white;
+  font-weight: bolder;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.accordion:hover {
+  background-color: #4c92af;
+}
+
+#sideBox #toolBar, #featureBox, #varBox {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow-x: scroll;
+  transition: max-height 0.2s ease-out;
+}
+
+.img_container {
+  float: left;
+  margin: 15px;
+  padding: 0;
+  transition: 0.5s;
+  border: 0px;
+  background-color: white;
+}
+
+.img_container:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  -ms-transform: scale(1.1,1.1); /* IE 9 */
+  -webkit-transform: scale(1.1,1.1); /* Safari */
+  transform: scale(1.1,1.1); /* Standard syntax */
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  font-size: 10px;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -65px;
+}
+
+.img_container:hover .tooltiptext {
+  visibility: visible;
+}
+/* ******************************************************* */
+/* property form css */
+#varBox #propertyForm {
+  margin: 10px;
+  color: #444444;
+  height: 200px; /* 120px */
+}
+
+input[type=text,number], select, textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  color: #999797;
+  display: none;
+}
+
+label {
+  padding: 10px 0 0 0;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  display: none;
+}
+
+.col-25 {
+  float: left;
+  width: 30%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: right;
+  width: 70%;
+  margin-top: 10px;
+}
+
+.col-100 {
+  float: left;
+  width: 100%;
+}
+
+/* Clear floats after the columns */
+.formRow:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+#input1, #input2, #input3,#input4,
+#input5, #input6, #input7, #input8 {
+  display: none;
+}
+
+#input7, #input8 {
+    margin-left: 20px;
+}
+
+#fieldUpdateBtn {
+  display: none;
+  float: left;
+  width: 100%;
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+
+#fieldUpdateBtn:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+#p1, #p2 {
+  display: none;
+  font-size: 10px;
+  margin-left: 10px;
+}
+/* ******************************************************* */

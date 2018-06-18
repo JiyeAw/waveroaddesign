@@ -1,0 +1,74 @@
+/*canvasBox cascading style sheet
+
+This includes the modification of:
+1. canvasBox
+2. menuOpenerBox
+3.
+For modification of:
+1. sideBox, go to sideBoxStyle.css
+2. accordionBox, go to accordionStyle.css
+3. navBar, go to navBarStyle.css
+*/
+
+#canvasBox {
+  position: relative;
+  height: 100%;
+  background-color: #f2f2f2;
+  transition: margin-right 1s;
+}
+
+#canvasBox #menuOpenerBox a {
+  float:right;
+  /* right:-10px;
+  transition: 0.3s; */
+  padding: 12px;
+  margin-right: -1px;
+  width: 6px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px 0 0 5px;
+  cursor: pointer;
+}
+
+#canvasBox #menuOpenerBox a:hover {
+  right: 0;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#canvasBox #menuOpenerBox #menuOpener {
+  position: relative;
+  margin-top: 20px;
+  background-color: #4c92af;
+  z-index:2;
+}
+
+#canvas, #canvasTemp {
+  position:absolute;
+  margin-top: 21px;
+  margin-left: 21px;
+  background:#fff;
+  border: 1px solid #999797;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+#top-ruler, #left-ruler {
+  position:fixed;
+  background-color: #e5e5e5;
+  border: 1px solid #999797;
+}
+
+#top-ruler {
+  margin-top: -1px;
+  margin-left: 20px;
+  width: 99%;
+  height: 20px;
+}
+#left-ruler {
+  margin-top: 20px;
+  margin-left: -1px;
+  width: 20px;
+  height: 97%;
+}

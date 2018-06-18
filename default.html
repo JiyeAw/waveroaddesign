@@ -1,0 +1,208 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.2/fabric.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Project 1 - Wave Road Design</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="style/generalStyle.css">
+  <link rel="stylesheet" type="text/css" href="style/footerStyle.css">
+  <link rel="stylesheet" type="text/css" href="style/canvasStyle.css">
+  <link rel="stylesheet" type="text/css" href="style/sideBoxStyle.css">
+  <link rel="stylesheet" type="text/css" href="style/navBarStyle.css">
+  <link rel="stylesheet" type="text/css" href="style/accordionStyle.css">
+  <link rel="stylesheet" type="text/css" href="style/canvasModalStyle.css">
+  <link rel="stylesheet" type="text/css" href="style/importStyle.css">
+
+</head>
+
+<body>
+  <div class="mainDiv">
+  <div id="myModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Select Design To Continue</p>
+			<input type="file" id="importedFile"/>
+			<button type="button" id="checking_button" class="#" onclick="readFile();">Check</button>
+		</div>
+	</div>
+    <div class="interactDiv">
+      <div id="canvasBox">
+        <div id="menuOpenerBox" onclick="openSideBox()">
+          <a id="menuOpener">||</a>
+        </div>
+        <canvas id="top-ruler" ></canvas>
+        <canvas id="left-ruler"></canvas>
+        <canvas id="canvas" width="3840" height="2160"></canvas>
+      </div>
+
+      <div id="sideBox" style="width:0px;">
+        <div id="navBar">
+          <button class="dropbtn">Options</button>
+          <div class="dd_content">
+            <button class="accordion-navbar">Project</button>
+              <div class="submenu">
+                <a href="#">New project</a>
+                <a href="#" id="importFile">Import project</a>
+                <a href="#" id="exportFile">Export project</a>
+              </div>
+            <button class="accordion-navbar">Rules</button>
+              <div class="submenu">
+                <a href="ruleEditor.html" target="_blank">Rule list</a>
+                <a href="ruleEditor.html" target="_blank">Add rule</a>
+              </div>
+            <button class="accordion-navbar" href="#">Map</button>
+            <!-- submit data to the backend  -->
+            <button id="reportBtn" class="accordion-navbar" type="button" onclick="display()">Report</button>
+            <a href="#">Help</a>
+            <a href="#">About Us</a>
+          </div>
+        </div>
+        <div id="accordionBox">
+          <button class="accordion">Tools</button>
+            <div id="toolBar">
+              <button type="button" id="cursorBtn" class="img_container">
+                <img src="img/cursor.png" alt="pic" style="width:40px;">
+                <div class="tooltip"><span class="tooltiptext">Cursor</span></div>
+              </button>
+              <button type="button" id="deleteBtn" class="img_container">
+                <img src="img/delete.png" alt="pic" style="width:40px;">
+                <div class="tooltip"><span class="tooltiptext">Delete</span></div>
+              </button>
+              <button type="button" id="drawBtn" class="img_container">
+                <img src="img/crosshair.png" alt="pic" style="width:40px;">
+                <div class="tooltip"><span class="tooltiptext">Crosshair</span></div>
+              </button>
+            </div>
+          <button class="accordion">Features</button>
+            <div id="featureBox">
+              <button type="button" id="speedBtn" class="img_container">
+                <img src="img/speed.png" alt="pic" style="width:40px;">
+                <div class="tooltip"><span class="tooltiptext">Speed limit</span></div>
+              </button>
+              <button type="button" id="laneEndBtn" class="img_container">
+                <img src="img/lane_ends.png" alt="pic" style="width:40px;">
+                <div class="tooltip"><span class="tooltiptext">Merging lane</span></div>
+              </button>
+              <button type="button" id="newLaneBtn" class="img_container">
+                <img src="img/new_lane.png" alt="pic" style="width:40px;">
+                <div class="tooltip"><span class="tooltiptext">Additional lane</span></div>
+              </button>
+              <button type="button" id="onRampBtn" class="img_container">
+                <img src="img/onramp.png" alt="pic" style="width:40px;">
+                <div class="tooltip"><span class="tooltiptext">On ramp</div>
+              </button>
+              <button type="button" id="offRampBtn" class="img_container">
+                <img src="img/exit.jpg" alt="pic" style="width:40px;">
+                <div class="tooltip"><span class="tooltiptext">Off ramp</div>
+              </button>
+              <button type="button" id="leftDirBtn" class="img_container">
+                <img src="img/right-to-left.png" alt="pic" style="width:40px;">
+                <div class="tooltip"><span class="tooltiptext">Left Direction</div>
+              </button>
+              <button type="button" id="rightDirBtn" class="img_container">
+                <img src="img/left-to-right.png" alt="pic" style="width:40px;">
+                <div class="tooltip"><span class="tooltiptext">Right Direction</div>
+              </button>
+            </div>
+          <button class="accordion">Property</button>
+            <div id="varBox">
+              <form id="propertyForm">
+                <div class="formRow">
+                  <div class="col-25">
+                    <label id="lb1"></label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="input1">
+                  </div>
+                </div>
+                <div class="formRow">
+                  <div class="col-25">
+                    <label id="lb2"></label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="input2">
+                  </div>
+                </div>
+                <div class="formRow">
+                  <div class="col-25">
+                    <label id="lb3"></label>
+                  </div>
+                  <div class="col-75">
+                    <input id="input7" type="radio" name="lanes" value="unaltered"><span id="p1"></span>
+                    <input id="input8" type="radio" name="lanes" value="reduced"><span id="p2"></span>
+                    <input type="text" id="input3">
+                  </div>
+                </div>
+                <div class="formRow">
+                  <div class="col-25">
+                    <label id="lb4"></label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="input4">
+                  </div>
+                </div>
+                <div class="formRow">
+                  <div class="col-25">
+                    <label id="lb5"></label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="input5">
+                  </div>
+                </div>
+                <div class="formRow">
+                  <div class="col-25">
+                    <label id="lb6"></label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="input6">
+                  </div>
+                </div>
+                <div class="formRow">
+                  <div class="col-100">
+                    <button id='fieldUpdateBtn' type='button'>Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- <button id="calcBtn">Result</button> -->
+      </div>
+    </div>
+    <div class="footerDiv">
+      <div id='infoContainer'>
+        <p id='infoTxt1'></p>
+        <p id='infoTxt2'></p>
+        <p id='infoTxt3'></p>
+      </div>
+      <div id='sliderContainer'>
+        <p id='minZoom'>0</p>
+        <input class="slider" id="zoomSlider" type="range" min="1" max="100" value="50">
+        <p id='maxZoom'>100</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- list of scripts  -->
+<script type="text/javascript" src="js/sideBoxTransition.js"></script> <!-- sideBox opener -->
+<script type="text/javascript" src="js/accordionEffect.js"></script> <!-- accordion effect -->
+<script type="text/javascript" src="js/accordion-navbarEffect.js"></script> <!-- accordion-navbar effect -->
+<script type="text/javascript" src="js/canvasDrawing.js"></script> <!-- canvas drawing -->
+<script type="text/javascript" src="js/createVarBox.js"></script>
+<script type="text/javascript" src="js/footerUpdate.js"></script>
+<script type="text/javascript" src="js/objectStorage.js"></script>
+<script type="text/javascript" src="js/segmentProcessor.js"></script>
+<script type="text/javascript" src="js/featureProcessor.js"></script>
+<script type="text/javascript" src="js/DummyTestsModule.js"></script>
+<script type="text/javascript" src="js/RoadTestModule.js"></script>
+<script type="text/javascript" src="js/errorGenerator.js"></script>
+<script type="text/javascript" src="js/importDesign.js"></script>
+<script type="text/javascript" src="js/exportGenerator.js"></script>
+<script type="text/javascript" src="js/tests.dat"></script>
+
+</html>

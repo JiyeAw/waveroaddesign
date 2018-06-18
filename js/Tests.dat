@@ -1,0 +1,40 @@
+var testString = `#--------------------------------------------------------------
+-WARD road tests
+-comments are delenated on both sides by the hash symbol
+-comments are multiline and continue until another hash is found
+-all tests other than the last must end with '@' before the next test can begin
+-the final test must NOT end with '@' or the parser will crash
+-some tests are commented out. This is because the parser can not handle some of the parameters used
+-parameters that are still in progress include: distance
+---------------------------------------------------------------#
+
+#2#
+#2.2 Horizontal Alignment (superelevation)#
+; superElevation+friction < (currentSpeed*currentSpeed)/(9.81*curvature); superelevation is too low for this curve radius and speed@
+
+#2.3, 2.4, 2.5 merging and diverging tapers#
+#merging taper, 5.5 is the number of seconds taken for a merging taper to close for a 3.3m road#
+distanceFoward <= taperLength && distanceFoward > 0; otherTaperLength != 0; there should not be more than one merging or diverging lane at a time@
+distanceFoward <= taperLength && distanceFoward > 0; otherSpeed != currentSpeed; speed should not change during a merge@
+; taperLength <= currentSpeed*0.277778*5.5 && taperLength != 0; Taper length is too short@#if there is a taper length, it must be 5.5 sec long#
+
+#diverging taper, 3.3 is the number of seconds taken for a diverging taper to close for a 3.3m road#
+otherTaperLength != 0, distanceFoward > 0; distanceFoward <= taperLength; there should not be more than one merging or diverging lane at a time@
+; taperLength < currentSpeed*0.277778*3.3 && taperLength != 0; Taper length is too short@#if there is a taper length, it must be 3.3 sec long#
+
+#2.7 speed limit increments#
+type = speed && distanceBack < 500 && distanceBack >= 0; otherSpeed+20 < currentSpeed; Speed limit should not increase by more than 20kmph within 500m@
+
+
+
+#2.9 Maximum decrease in speed limit#
+#desirable max#
+type = speed && distanceBack < 500 && distanceBack >= 0; otherSpeed-10 > currentSpeed; Speed decreases by more than the desirable maximum (10kmph)@
+#absolute max#
+type = speed && distanceBack < 500 && distanceBack >= 0; otherSpeed-15 > currentSpeed; Speed decreases by more than the absolute maximum (15kmph)@
+
+#2.8 speed cap#
+#QLD#
+; currentSpeed > 110; Exceeds maximum speed limit for Queensland@
+#Aus#
+; currentSpeed > 130; Exceeds maximum speed limit for Australia`

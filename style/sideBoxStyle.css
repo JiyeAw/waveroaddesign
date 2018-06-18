@@ -1,0 +1,42 @@
+/*
+sideBox cascading stylesheet
+
+This includes the modification of sideBox and calcbtn
+For modification of accordionBox (includes toolBar, featureBox, ruleBox and varBox), go to accordionStyle.css
+For modification of navBar, go to navBar.css
+*/
+
+#sideBox {
+  position: fixed;
+  right: 0; top: 0; bottom: 0;
+  background-color: #999797;
+  height: 97%;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 1s;
+  box-shadow: 0 0 5px 2px rgba(0,0,0,0.24);
+  border-radius: 0 0 0 5px;
+}
+
+#calcbtn {
+  position: absolute;
+  bottom:0;
+  margin-left: 50%;
+  background-color: #24627c;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#calcbtn:hover {
+  background-color: #4c92af;
+  font-weight: bold;
+}

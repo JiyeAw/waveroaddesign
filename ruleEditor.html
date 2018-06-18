@@ -1,0 +1,30 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.2.3/fabric.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Rule list</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="style/ruleEditorStyle.css">
+</head>
+
+<body>
+  <div id="myDIV" class="header">
+    <h2 style="margin:5px">Rules Table</h2>
+    <input type="text" id="myInput" placeholder="Rules...">
+    <span onclick="newRule()" class="ruleBtn">Add</span>
+    <span onclick="saveAllRules()" class="ruleBtn">Save all</span>
+  </div>
+
+  <ul id="myUL">
+    <li>Rule 1: blah blah blah</li>
+    <li class="checked">When this is checked, this rule is disabled</li>
+    <li>Rule is used when it is unchecked</li>
+  </ul>
+</body>
+
+<script type="text/javascript" src="js/ruleEditing.js"></script>
+</html>
